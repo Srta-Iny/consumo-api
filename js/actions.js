@@ -3,7 +3,10 @@
 $.ajax({
   method: 'GET',
   url: 'http://animu.club/prueba/api-twitter.php',
-  data: { tipo: 'a' }
+  data: { tipo: 'a' },
+  xhrFields: {
+     withCredentials: true
+   }
 })
   .done(function(data) {
   	var obj = jQuery.parseJSON( data );
@@ -19,7 +22,10 @@ $.ajax({
 $.ajax({
   method: 'GET',
   url: 'http://animu.club/prueba/api-twitter.php',
-  data: { tipo: 'b' }
+  data: { tipo: 'b' },
+  xhrFields: {
+     withCredentials: true
+   }
 })
   .done(function(data) {
   	var obj = jQuery.parseJSON( data );
@@ -35,7 +41,10 @@ $.ajax({
 $.ajax({
   method: 'GET',
   url: 'http://animu.club/prueba/api-twitter.php',
-  data: { tipo: 'c' }
+  data: { tipo: 'c' },
+  xhrFields: {
+     withCredentials: true
+   }
 })
   .done(function(data) {
 

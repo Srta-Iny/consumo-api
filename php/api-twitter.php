@@ -27,15 +27,15 @@ $tipo = $_GET['tipo'];
 $resp = '';
 
 if ($tipo === 'a'){
-	$resp = $twitter->setGetfield('?q=#laboratorians&count=15')
+	$resp = $twitter->setGetfield('?q=%23laboratorians&result_type=recent&count=5')
     ->buildOauth('https://api.twitter.com/1.1/search/tweets.json', 'GET')
     ->performRequest();
 }else if ( $tipo === 'b'){
-	$resp = $twitter->setGetfield('?q=#codigoquetransforma&count=15')
+	$resp = $twitter->setGetfield('?q=%23codigoquetransforma&count=5')
     ->buildOauth('https://api.twitter.com/1.1/search/tweets.json', 'GET')
     ->performRequest();
 }else if ($tipo === 'c'){
-	$resp = $twitter->setGetfield('?screen_name=laboratoriacl&include_rts=false&count=10')
+	$resp = $twitter->setGetfield('?screen_name=laboratoriacl&count=5')
     ->buildOauth('https://api.twitter.com/1.1/statuses/user_timeline.json', 'GET')
     ->performRequest();
 }

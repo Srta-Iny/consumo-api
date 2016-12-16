@@ -4,14 +4,16 @@ $.ajax({
   method: 'GET',
   url: 'http://animu.club/prueba/api-twitter.php',
   data: { tipo: 'a' },
-  xhrFields: {
-     withCredentials: true
-   }
 })
   .done(function(data) {
   	var obj = jQuery.parseJSON( data );
     console.log( obj );
-    $('#laboratorians').html(obj.statuses[0].text);
+    $.each( obj.statuses, function( index, comentario) {
+    	var texto = comentario.text;
+    	var usuario = comentario.user.screen_name;
+    	$('#laboratorians').append('<p>'+'@'+usuario+": "+texto+'</p>'); 
+	})
+    
   })
   .fail(function() {
     alert( 'error' );
@@ -22,15 +24,16 @@ $.ajax({
 $.ajax({
   method: 'GET',
   url: 'http://animu.club/prueba/api-twitter.php',
-  data: { tipo: 'b' },
-  xhrFields: {
-     withCredentials: true
-   }
+  data: { tipo: 'b' }
 })
   .done(function(data) {
   	var obj = jQuery.parseJSON( data );
     console.log( obj );
-    $('#codigo').append('<p>'+obj.statuses[0].text+'</p>');
+    $.each( obj.statuses, function( index, comentario) {
+    	var texto = comentario.text;
+    	var usuario = comentario.user.screen_name;
+    	$('#codigo').append('<p>'+'@'+usuario+": "+texto+'</p>'); 
+	})
   })
   .fail(function() {
     alert( 'error' );
@@ -41,10 +44,7 @@ $.ajax({
 $.ajax({
   method: 'GET',
   url: 'http://animu.club/prueba/api-twitter.php',
-  data: { tipo: 'c' },
-  xhrFields: {
-     withCredentials: true
-   }
+  data: { tipo: 'c' }
 })
   .done(function(data) {
 
@@ -52,7 +52,7 @@ $.ajax({
     console.log( obj );
     $.each( obj, function( index, comentario) {
     	var texto = comentario.text;
-    	var usuario = comentario.user.name; 
+    	var usuario = comentario.user.screen_name; 
 		$('#user').append('<p>'+'@'+usuario+": "+texto+'</p>');
 	})
     
